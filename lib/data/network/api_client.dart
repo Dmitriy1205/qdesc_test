@@ -8,7 +8,7 @@ import '../models/customer.dart';
 class ApiClient {
   var dio = Dio();
 
-  Future<AuthSuccess> login(String email, String password) async {
+  Future<AuthSuccess> getToken(String email, String password) async {
     try {
       final response = await dio.post(Endpoint.loginUrl, data: {
         'email': email,

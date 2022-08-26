@@ -7,8 +7,8 @@ class Repository {
   var ls = LocalStorage.instance;
   var api = ApiClient();
 
-  Future<AuthSuccess> getToken(String email, String password) async {
-    final result = await api.login(email, password);
+  Future<AuthSuccess> login(String email, String password) async {
+    final result = await api.getToken(email, password);
     await ls.writeToken(result.token);
     return result;
   }

@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:qdesc_test/data/network/api_client.dart';
 import 'package:qdesc_test/data/repository/repository.dart';
 
 import '../../../data/models/dt_status.dart';
@@ -13,7 +12,7 @@ class AuthCubit extends Cubit<AuthState> {
 
   Future<void> login(String email, String password) async {
     try {
-      await repo.getToken(email, password);
+      await repo.login(email, password);
       emit(state.copyWith(status: DtStatus.loaded()));
     } catch (e) {
       emit(state.copyWith(status: DtStatus.error(e.toString())));
