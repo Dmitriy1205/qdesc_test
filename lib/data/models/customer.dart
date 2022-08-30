@@ -26,7 +26,7 @@ class Customer {
       name: json['name'],
       beginDate: json['beginDate'],
       servicePlanType: json['servicePlanType'],
-      accountStatus: json['accountStatu'],
+      accountStatus: json['accountStatus'],
       modileKeysSubscriber: json['modileKeysSubscriber'],
       saasSubscriber: json['saasSubscriber'],
       ofLocks: json['deviceNumberOfLocks'],

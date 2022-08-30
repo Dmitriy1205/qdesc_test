@@ -16,7 +16,7 @@ class Repository {
   Future<List<Customer>> getCustomers() async {
     final token = await ls.readToken();
     final headers = {
-      'Authorization': token,
+      'Authorization': 'Bearer $token',
       'content-type': 'application/json',
       'accept': 'application/json',
     };

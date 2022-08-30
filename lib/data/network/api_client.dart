@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:dio/dio.dart';
 import 'package:qdesc_test/data/network/endpoint.dart';
 
@@ -14,9 +12,9 @@ class ApiClient {
         'email': email,
         'password': password,
       });
-      print(response.data);
-      print(response.headers);
-      print(response.statusMessage);
+      // print(response.data);
+      // print(response.headers);
+      // print(response.statusMessage);
 
 
       return AuthSuccess.fromJson(response.data);
@@ -30,11 +28,11 @@ class ApiClient {
       {required Map<String, dynamic> headers}) async {
     try {
       final response = await dio.get(Endpoint.customersUrl, options: Options(headers: headers));
-      print(jsonDecode(response.data));
-      var res = json.decode(response.data);
+      print(response.data);
+      var res = response.data;
       return (res as List<dynamic>).map((e) => Customer.fromJson(e)).toList();
     } on DioError catch (e) {
-      print(e.response);
+      print(e.response!.data);
       throw e.response!.data[0]['description'];
     }
   }

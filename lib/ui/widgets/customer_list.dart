@@ -47,9 +47,10 @@ class CustomerList extends StatelessWidget {
                     title: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text('Customer'
-                            // state.customer?[index].name,
-                            ),
+                        Text(
+                          //'Customer'
+                          state.customer![index].name,
+                        ),
                         IconButton(
                           onPressed: () {
                             //TODO: edit item
@@ -63,7 +64,8 @@ class CustomerList extends StatelessWidget {
                       ],
                     ),
                     children: [
-                      buildList(),
+                      buildInfoList(state, index),
+
                     ],
                   ),
                 );
@@ -73,38 +75,178 @@ class CustomerList extends StatelessWidget {
     );
   }
 
-  Widget buildList() {
+  Widget buildInfoList(state, index) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(15, 0, 15, 15),
-      child: ListView.builder(
-          shrinkWrap: true,
-          itemCount: list.length,
-          itemBuilder: (context, index) {
-            return Padding(
-              padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-              child: Row(
-                children: [
-                  Text(
-                    list[index],
-                    style: TextStyle(color: Colors.green[600]),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  'Begin date',
+                  style: TextStyle(
+                    color: Colors.green,
                   ),
-                  // Text(item.toString()),
-                ],
+                ),
+                Text(
+                  state.customer![index].beginDate.substring(0,10),
+                  style: const TextStyle(
+                    color: Colors.black,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Text(
+                'Service Plan Type',
+                style: TextStyle(
+                  color: Colors.green,
+                ),
               ),
-            );
-          }),
+              Text(
+                state.customer![index].servicePlanType,
+                style: TextStyle(
+                  color: Colors.black,
+                ),
+              ),
+            ],
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  'Account Status',
+                  style: TextStyle(
+                    color: Colors.green,
+                  ),
+                ),
+                Text(
+                  state.customer![index].accountStatus,
+                  style: const TextStyle(
+                    color: Colors.black,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Text(
+                'Mobile Key Subscriber',
+                style: TextStyle(
+                  color: Colors.green,
+                ),
+              ),
+              Text(
+                state.customer![index].modileKeysSubscriber == true
+                    ? 'Yes'
+                    : 'No',
+                style: const TextStyle(
+                  color: Colors.black,
+                ),
+              ),
+            ],
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  'SAAS Subscriber',
+                  style: TextStyle(
+                    color: Colors.green,
+                  ),
+                ),
+                Text(
+                  state.customer![index].saasSubscriber == true ? 'Yes' : 'No',
+                  style: const TextStyle(
+                    color: Colors.black,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Row(
+            children: const [
+              Text(
+                'Number',
+                style: TextStyle(
+                  color: Colors.green,
+                ),
+              ),
+            ],
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  'of locks',
+                  style: TextStyle(
+                    color: Colors.green,
+                  ),
+                ),
+                Text(
+                  state.customer![index].ofLocks.toString(),
+                  style: const TextStyle(
+                    color: Colors.black,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Text(
+                'of readers',
+                style: TextStyle(
+                  color: Colors.green,
+                ),
+              ),
+              Text(
+                state.customer![index].ofReaders.toString(),
+                style: const TextStyle(
+                  color: Colors.black,
+                ),
+              ),
+            ],
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  'of lockers',
+                  style: TextStyle(
+                    color: Colors.green,
+                  ),
+                ),
+                Text(
+                  state.customer![index].ofLockers.toString(),
+                  style: const TextStyle(
+                    color: Colors.black,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 
-  var list = <String>[
-    'Begin date',
-    'Service Plan Type',
-    'Account Status',
-    'Mobile Key Subscriber',
-    'SAAS Subscriber',
-    'Number',
-    'of locks',
-    'of readers',
-    'of lockers',
-  ];
 }
